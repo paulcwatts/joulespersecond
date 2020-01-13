@@ -1,4 +1,4 @@
-name: CI
+name: Main
 
 on: [push]
 
@@ -19,8 +19,12 @@ jobs:
       - run: yarn prettier:check
       - name: Build production
         run: yarn build --environment=production
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist
-          path: dist
+      - name: Deploy production
+        if: github.ref == 'master'
+        run: yarn deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CFN_HOSTNAME: ${{ secrets.CFN_HOSTNAME }}
+          CFN_DOMAINNAME: ${{ secrets.CFN_DOMAINNAME }}
+          CFN_CERTIFICATE: ${{ secrets.CFN_CERTIFICATE }}
