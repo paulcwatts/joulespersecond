@@ -19,6 +19,7 @@ jobs:
       - run: yarn prettier:check
       - name: Build production
         run: yarn build --environment=production
+        if: github.ref != 'master'
       - name: Deploy production
         if: github.ref == 'master'
         run: yarn deploy
