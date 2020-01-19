@@ -63,7 +63,7 @@ Resources:
         CustomErrorResponses:
           - ErrorCode: 404
             ResponseCode: 200
-            ResponsePagePath: "/index.html"
+            ResponsePagePath: "/_empty.html"
         DefaultRootObject: "index.html"
   DNSName:
     Type: AWS::Route53::RecordSet
