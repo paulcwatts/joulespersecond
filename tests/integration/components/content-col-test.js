@@ -20,4 +20,11 @@ module("Integration | Component | content-col", function(hooks) {
     `);
     assert.dom("[data-test-element").hasText("template block text");
   });
+
+  test("it has a delay attribute", async function(assert) {
+    await render(hbs`
+      <ContentCol data-test-element @href="http://foo.com" @delay={{true}} />
+    `);
+    assert.dom("[data-test-element]").hasClass("content-col--delay");
+  });
 });

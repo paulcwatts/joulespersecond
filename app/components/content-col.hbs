@@ -2,8 +2,9 @@
   href={{@href}}
   rel="noreferrer"
   referrerpolicy="no-referrer"
-  class="content-col"
+  class="content-col {{if @delay "content-col--delay"}}"
   ...attributes
+  {{did-insert (fn this.setIn)}}
 >
   <p>
     {{fa-icon @icon size="4"}}

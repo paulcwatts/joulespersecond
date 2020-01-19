@@ -14,11 +14,8 @@ $lg-breakpoint: 768px;
   }
 }
 
-//
-// Simple flex grid
-//
-h1 {
-  font-weight: normal;
+header,
+footer {
   margin: 0.5rem 1.5rem;
 
   @include media-lg() {
@@ -26,6 +23,14 @@ h1 {
   }
 }
 
+h1 {
+  font-weight: normal;
+  margin: 0;
+}
+
+//
+// Simple flex grid
+//
 .container {
   height: 100vh;
   display: flex;
@@ -72,31 +77,44 @@ h1 {
     text-shadow: 0 0 30px rgba(20, 167, 217, 0.7);
   }
 
+  $transition-duration: 0.5s;
+
   &:after {
     content: "";
     display: block;
-    width: 80%;
+    width: 0;
     height: 1px;
     margin: 0 auto;
     background-color: white;
+    transition: width $transition-duration ease-in-out;
 
     @include media-lg() {
       position: absolute;
       top: 10%;
       right: 0;
-      height: 80%;
+      height: 0;
       width: 1px;
-      margin: auto 0;
+      transition-property: height;
     }
   }
   &:last-child:after {
     content: none;
+  }
+  &--in:after {
+    width: 80%;
+
+    @include media-lg() {
+      width: 1px;
+      height: 80%;
+    }
+  }
+  &--delay:after {
+    transition-delay: $transition-duration / 3;
   }
 }
 
 footer {
   color: rgba(white, 0.75);
   text-align: right;
-  margin: 1rem 3rem;
   font-size: 10px;
 }
