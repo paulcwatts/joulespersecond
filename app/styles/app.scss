@@ -1,0 +1,102 @@
+@import "normalize";
+
+body {
+  color: white;
+  background-color: #1476a2;
+  font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue",
+    Calibri, Helvetica, Arial, sans-serif;
+}
+
+$lg-breakpoint: 768px;
+@mixin media-lg() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+//
+// Simple flex grid
+//
+h1 {
+  font-weight: normal;
+  margin: 0.5rem 1.5rem;
+
+  @include media-lg() {
+    margin: 1rem 3rem;
+  }
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  align-content: center;
+}
+
+.content-row-container {
+  margin: auto 0;
+  display: flex;
+  width: 100%;
+}
+
+.content-row {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @include media-lg() {
+    flex-direction: row;
+  }
+}
+
+.content-col {
+  display: block;
+  width: 200px;
+  text-align: center;
+  position: relative;
+
+  color: white;
+  text-decoration: none;
+  transition: text-shadow 0.4s linear;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 0 30px rgba(20, 167, 217, 0.7);
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 1px;
+    margin: 0 auto;
+    background-color: white;
+
+    @include media-lg() {
+      position: absolute;
+      top: 10%;
+      right: 0;
+      height: 80%;
+      width: 1px;
+      margin: auto 0;
+    }
+  }
+  &:last-child:after {
+    content: none;
+  }
+}
+
+footer {
+  color: rgba(white, 0.75);
+  text-align: right;
+  margin: 1rem 3rem;
+  font-size: 10px;
+}
