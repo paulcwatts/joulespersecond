@@ -2,10 +2,10 @@
   "name": "joulespersecond",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for joulespersecond goes here",
-  "repository": "",
+  "description": "Paul's personal website",
+  "repository": "https://github.com/paulcwatts/joulespersecond/",
   "license": "MIT",
-  "author": "",
+  "author": "Paul Watts <paulcwatts@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
